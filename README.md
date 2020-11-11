@@ -1,10 +1,9 @@
 ## Comandos
 
-`flask run` -> Corre el proyecto en el puerto 5000
-`flask db init --multidb` -> Inicializar la base de datos
-`flask db migrate` -> Crear una migracion nueva
-`flask db upgrade` -> Aplicar las migraciones
-
+`flask run` -> Corre el proyecto en el puerto 5000  
+`flask db init --multidb` -> Inicializar la base de datos  
+`flask db migrate` -> Crear una migracion nueva  
+`flask db upgrade` -> Aplicar las migraciones  
 
 ## Database
 
