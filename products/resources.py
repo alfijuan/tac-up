@@ -1,5 +1,5 @@
 from flask_restful import Resource, reqparse
-from .models import Product
+from products.models import Product
 
 parser = reqparse.RequestParser()
 parser.add_argument('id', required=False)
@@ -38,7 +38,7 @@ class Products(Resource):
                 }
             }, 201
         except:
-            return {'message': 'Something went wrong'}, 500
+            return {'message': 'Error while saving the product'}, 500
 
     def delete(self):
         """
@@ -58,7 +58,7 @@ class ProductsDetail(Resource):
                     'product': item.to_json()
                 }
             }
-        return {"messages": "User not found"}, 404
+        return {"messages": "Product not found"}, 404
 
     def put(self, id):
         """
@@ -88,8 +88,7 @@ class ProductsDetail(Resource):
                 }
             }
         except Exception as e:
-            print(e)
-            return {'message': 'Something went wrong'}, 500
+            return {'message': 'Error while updating the product'}, 500
 
     def delete(self, id):
         """

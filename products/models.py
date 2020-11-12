@@ -1,11 +1,11 @@
 from main import db
-
+from sales.models import Sale
 
 class Product(db.Model):
     """
     Product Model Class
     """
-    __tablename__ = 'products'
+    __tablename__ = 'product'
     __bind_key__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)

@@ -9,7 +9,7 @@ from flask_jwt_extended import (
 )
 import pdb
 
-from .models import User, RevokedTokenModel
+from users.models import User, RevokedTokenModel
 
 parser = reqparse.RequestParser()
 parser.add_argument('username', required=True, help='username cannot be blank')

@@ -1,19 +1,18 @@
 from main import db
 from passlib.hash import pbkdf2_sha256 as sha256
-
+from sales.models import Sale
 
 class User(db.Model):
     """
     User Model Class
     """
-    __tablename__ = 'users'
+    __tablename__ = 'user'
     __bind_key__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
     first_name = db.Column(db.String(120), nullable=True)
     last_name = db.Column(db.String(120), nullable=True)
-    sales = db.relationship('Sale', backref='sale', lazy=True)
 
     """
     Save user details in database

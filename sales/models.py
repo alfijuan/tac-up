@@ -5,11 +5,11 @@ class Sale(db.Model):
     """
     Sale Model Class
     """
-    __tablename__ = 'sales'
+    __tablename__ = 'sale'
     __bind_key__ = 'sales'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
+    user_id = db.Column(db.Integer, nullable=False)
+    product_id = db.Column(db.Integer, nullable=False)
     date = db.Column(db.DateTime(), index=True, default=datetime.now)
     commission_paid = db.Column(db.Boolean, default=False, nullable=False)
 
@@ -33,10 +33,10 @@ class Sale(db.Model):
     def to_json(self):
         return {
             'id': self.id,
-            'username': self.username,
-            'password': self.password,
-            'first_name': self.first_name,
-            'last_name': self.last_name
+            'user_id': self.user_id,
+            'product_id': self.product_id,
+            'date': self.date.strftime('%Y-%m-%d'),
+            'commission_paid': self.commission_paid
         }
 
     """

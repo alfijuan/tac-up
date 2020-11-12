@@ -8,6 +8,12 @@
 ## Database
 
 ```
+DROP DATABASE tap_products;
+DROP DATABASE tap_users;
+DROP DATABASE tap_sales;
+```
+
+```
 CREATE USER dev WITH PASSWORD 'dev';
 ALTER ROLE dev SET client_encoding TO 'utf8';
 ALTER ROLE dev SET default_transaction_isolation TO 'read committed';
