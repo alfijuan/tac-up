@@ -1,5 +1,6 @@
 from flask_restful import Resource, reqparse
-from products.models import Product
+from src.products.models import Product
+from flask_jwt_extended import jwt_required
 
 parser = reqparse.RequestParser()
 parser.add_argument('id', required=False)
@@ -9,12 +10,14 @@ parser.add_argument('description', required=False)
 
 
 class Products(Resource):
+    @jwt_required
     def get(self):
         """
         Return all products
         """
         return Product.return_all()
 
+    @jwt_required
     def post(self):
         data = parser.parse_args()
         name = data['name']
@@ -40,13 +43,8 @@ class Products(Resource):
         except:
             return {'message': 'Error while saving the product'}, 500
 
-    def delete(self):
-        """
-        Delete all products
-        """
-        return Product.delete_all()
-
 class ProductsDetail(Resource):
+    @jwt_required
     def get(self, id):
         """
         Return product
@@ -60,6 +58,7 @@ class ProductsDetail(Resource):
             }
         return {"messages": "Product not found"}, 404
 
+    @jwt_required
     def put(self, id):
         """
         Edit product data
@@ -90,6 +89,7 @@ class ProductsDetail(Resource):
         except Exception as e:
             return {'message': 'Error while updating the product'}, 500
 
+    @jwt_required
     def delete(self, id):
         """
         Delete user

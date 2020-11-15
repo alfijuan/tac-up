@@ -9,7 +9,7 @@ from flask_jwt_extended import (
 )
 import pdb
 
-from users.models import User, RevokedTokenModel
+from src.users.models import User, RevokedTokenModel
 
 parser = reqparse.RequestParser()
 parser.add_argument('username', required=True, help='username cannot be blank')
@@ -46,7 +46,7 @@ class UserLogin(Resource):
                     'access_token': access_token,
                     'refresh_token': refresh_token
                 }
-            }
+            }, 200
         else:
             return {'message': 'Wrong credentials'}
 
@@ -102,6 +102,7 @@ class TokenRefresh(Resource):
 
 
 class Users(Resource):
+    @jwt_required
     def get(self):
         """
         Return all users
@@ -139,14 +140,9 @@ class Users(Resource):
         except:
             return {'message': 'Something went wrong'}, 500
 
-    def delete(self):
-        """
-        Delete all users
-        """
-        return User.delete_all()
-
 
 class UsersDetail(Resource):
+    @jwt_required
     def get(self, id):
         """
         Return user
@@ -160,6 +156,7 @@ class UsersDetail(Resource):
             }
         return {"messages": "User not found"}, 404
 
+    @jwt_required
     def put(self, id):
         """
         Edit user data
@@ -185,10 +182,11 @@ class UsersDetail(Resource):
                 'payload': {
                     'user': user.to_json(),
                 }
-            }
+            }, 200
         except:
             return {'message': 'Something went wrong'}, 500
 
+    @jwt_required
     def delete(self, id):
         """
         Delete user
@@ -201,15 +199,6 @@ class UsersDetail(Resource):
             return {
                 "payload": {},
                 "messages": "User deleted"
-            }
+            }, 200
         except:
             return {'message': 'Something went wrong'}, 500
-
-
-class SecretResource(Resource):
-    """
-    Example of required jwt resource
-    """
-    @jwt_required
-    def get(self):
-        return {'answer': 'You are accessing super secret blueprint'}

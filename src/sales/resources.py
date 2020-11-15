@@ -1,8 +1,9 @@
 from flask_restful import Resource, reqparse
-from sales.models import Sale
-from products.models import Product
-from users.models import User
+from src.sales.models import Sale
+from src.products.models import Product
+from src.users.models import User
 from decimal import Decimal
+from flask_jwt_extended import jwt_required
 
 parser = reqparse.RequestParser()
 parser.add_argument('id', required=False)
@@ -12,12 +13,14 @@ parser.add_argument('date', required=False)
 parser.add_argument('commission_paid', required=False)
 
 class Sales(Resource):
+    @jwt_required
     def get(self):
         """
         Return all sales
         """
         return Sale.return_all()
 
+    @jwt_required
     def post(self):
         data = parser.parse_args()
 
@@ -53,13 +56,8 @@ class Sales(Resource):
             print(e)
             return {'message': 'Error while saving the sale'}, 500
 
-    def delete(self):
-        """
-        Delete all sales
-        """
-        return Sale.delete_all()
-
 class SalesDetail(Resource):
+    @jwt_required
     def get(self, id):
         """
         Return sale
@@ -73,6 +71,7 @@ class SalesDetail(Resource):
             }
         return {"messages": "Sale not found"}, 404
 
+    @jwt_required
     def put(self, id):
         """
         Edit sale data
@@ -107,6 +106,7 @@ class SalesDetail(Resource):
         except Exception as e:
             return {'message': 'Error while updating the sale'}, 500
     
+    @jwt_required
     def delete(self, id):
         """
         Delete user
@@ -124,6 +124,7 @@ class SalesDetail(Resource):
             return {'message': 'Error while deleting the sale'}, 500
 
 class SalesCommissions(Resource):
+    @jwt_required
     def get(self, user_id):
         """
         Calculates the amount of commissions that has to be payed
@@ -153,6 +154,7 @@ class SalesCommissions(Resource):
         except:
             return {'message': 'Error while calculating commissions'}, 500
 
+    @jwt_required
     def post(self, user_id):
         """
         Calculates the amount of commissions that has to be payed

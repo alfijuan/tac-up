@@ -1,26 +1,27 @@
-from main import db
-from sales.models import Sale
+from src.main import db
+from datetime import datetime
 
-class Product(db.Model):
+class Sale(db.Model):
     """
-    Product Model Class
+    Sale Model Class
     """
-    __tablename__ = 'product'
-    __bind_key__ = 'products'
+    __tablename__ = 'sale'
+    __bind_key__ = 'sales'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True, nullable=False)
-    description = db.Column(db.String(400), nullable=True)
-    price = db.Column(db.DECIMAL(10,2), nullable=False)
+    user_id = db.Column(db.Integer, nullable=False)
+    product_id = db.Column(db.Integer, nullable=False)
+    date = db.Column(db.DateTime(), index=True, default=datetime.now)
+    commission_paid = db.Column(db.Boolean, default=False, nullable=False)
 
     """
-    Save product details in database
+    Save sale details in database
     """
     def save(self):
         db.session.add(self)
         db.session.commit()
-    
+
     """
-    Delete product
+    Delete user
     """
     def delete(self):
         db.session.delete(self)
@@ -32,35 +33,28 @@ class Product(db.Model):
     def to_json(self):
         return {
             'id': self.id,
-            'name': self.name,
-            'price': str(round(self.price, 2)),
-            'description': self.description
+            'user_id': self.user_id,
+            'product_id': self.product_id,
+            'date': self.date.strftime('%Y-%m-%d'),
+            'commission_paid': self.commission_paid
         }
 
     """
-    Find user by name
-    """
-    @classmethod
-    def find_by_name(cls, name):
-        return cls.query.filter_by(name=name).first()
-
-    """
-    Find user by id
+    Find sale by id
     """
     @classmethod
     def find_by_id(cls, id):
         return cls.query.filter_by(id=id).first()
 
     """
-    Return all products
+    Return all the sales data
     """
     @classmethod
     def return_all(cls):
-        return {'products': [prod.to_json() for prod in Product.query.all()]}
+        return {'sales': [sale.to_json() for sale in Sale.query.all()]}
 
-    
     """
-    Delete all products
+    Delete sales data
     """
     @classmethod
     def delete_all(cls):

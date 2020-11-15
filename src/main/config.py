@@ -8,6 +8,7 @@ class Config:
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or "TheLongWayToTheOthers"
     JWT_BLACKLIST_TOKEN_CHECKS = ['access', 'refresh']
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    PROPAGATE_EXCEPTIONS = True
     SQLALCHEMY_BINDS = {
         'users': 'postgres://dev:dev@localhost:5432/tap_users',
         'products': 'postgres://dev:dev@localhost:5432/tap_products',
@@ -22,9 +23,9 @@ class TestingConfig(Config):
     TESTING = True
     PRESERVE_CONTEXT_ON_EXCEPTION = False
     SQLALCHEMY_BINDS = {
-        'users': 'sqlite://' + os.path.join(basedir, 'app_users.db'),
-        'products': 'sqlite://' + os.path.join(basedir, 'app_products.db'),
-        'sales': 'sqlite://' + os.path.join(basedir, 'app_sales.db')
+        'users': 'sqlite:///' + os.path.join(basedir, 'app_users.db'),
+        'products': 'sqlite:///' + os.path.join(basedir, 'app_products.db'),
+        'sales': 'sqlite:///' + os.path.join(basedir, 'app_sales.db')
     }
     WTF_CSRF_ENABLED = False
 
@@ -39,4 +40,4 @@ configs = {
     'default': DevelopmentConfig
 }
 
-config = configs[os.environ.get('CONFIG_MODE', 'development')]
+# config = configs[os.environ.get('CONFIG_MODE', 'development')]

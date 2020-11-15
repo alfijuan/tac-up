@@ -1,6 +1,6 @@
-from main import db
+from src.main import db
 from passlib.hash import pbkdf2_sha256 as sha256
-from sales.models import Sale
+from src.sales.models import Sale
 
 class User(db.Model):
     """
@@ -60,18 +60,6 @@ class User(db.Model):
     @classmethod
     def return_all(cls):
         return {'users': [user.to_json() for user in User.query.all()]}
-
-    """
-    Delete user data
-    """
-    @classmethod
-    def delete_all(cls):
-        try:
-            num_rows_deleted = db.session.query(cls).delete()
-            db.session.commit()
-            return {'message': f'{num_rows_deleted} row(s) deleted'}
-        except:
-            return {'message': 'Something went wrong'}, 500
 
     """
     Generate hash from password

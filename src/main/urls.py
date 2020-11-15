@@ -1,7 +1,7 @@
-from main import api
-from users import resources as users_resources
-from products import resources as products_resources
-from sales import resources as sales_resources
+from src.main import api
+from src.users import resources as users_resources
+from src.products import resources as products_resources
+from src.sales import resources as sales_resources
 
 api.add_resource(users_resources.UserLogin, '/login')
 api.add_resource(users_resources.UserLogoutAccess, '/logout/access')

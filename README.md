@@ -31,3 +31,16 @@ GRANT ALL PRIVILEGES ON DATABASE tap_products TO dev;
 GRANT ALL PRIVILEGES ON DATABASE tap_users TO dev;
 GRANT ALL PRIVILEGES ON DATABASE tap_sales TO dev;
 ```
+
+
+## Testing
+
+Correr los test:
+```
+coverage run -m unittest tests/test_*.py
+```
+
+Mostrar coverage
+```
+coverage report -m 
+```
