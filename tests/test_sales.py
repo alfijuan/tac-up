@@ -82,6 +82,50 @@ class SalesCase(BaseTestClass):
         )
         self.assertEqual(404, res.status_code)
 
+        print('- Edit sale')
+        res = self.client.put(f'/sales/1',
+            data={
+                "user_id": 2,
+            },
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(200, res.status_code)
+
+        print('- Edit sale - error if user not exists')
+        res = self.client.put(f'/sales/1',
+            data={
+                "user_id": 999,
+            },
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(400, res.status_code)
+
+        print('- Edit sale - error if product not exists')
+        res = self.client.put(f'/sales/1',
+            data={
+                "product_id": 999,
+            },
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(400, res.status_code)
+
+        print('- Edit sale - error if not exists')
+        res = self.client.put(f'/sales/9999',
+            data={
+                "product_id": 1,
+            },
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(404, res.status_code)
+
         print('- Delete sale')
         res = self.client.delete(
             '/sales/1',
@@ -93,6 +137,38 @@ class SalesCase(BaseTestClass):
 
         print('- Delete sale - error if not exists')
         res = self.client.delete(f'/sales/9999',
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(404, res.status_code)
+
+        print('- Calculate commissions')
+        res = self.client.get(f'/commissions/1',
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(200, res.status_code)
+
+        print('- Calculate commissions - error if user not exists')
+        res = self.client.get(f'/commissions/9999',
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(404, res.status_code)
+
+        print('- Pay commissions')
+        res = self.client.post(f'/commissions/1',
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(200, res.status_code)
+
+        print('- Pay commissions - error if user not exists')
+        res = self.client.post(f'/commissions/9999',
             headers={
                 'Authorization': f'Bearer {access_token}'
             }
