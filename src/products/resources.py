@@ -104,5 +104,5 @@ class ProductsDetail(Resource):
                 "messages": "Product deleted"
             }
         except:
-            return {'message': 'Something went wrong'}, 500
+            return {'message': 'Error while deleting the product'}, 500
       

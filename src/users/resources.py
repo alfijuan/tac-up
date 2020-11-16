@@ -48,7 +48,7 @@ class UserLogin(Resource):
                 }
             }, 200
         else:
-            return {'message': 'Wrong credentials'}
+            return {'message': 'Wrong credentials'}, 400
 
 
 class UserLogoutAccess(Resource):
@@ -67,7 +67,7 @@ class UserLogoutAccess(Resource):
                 'payload': {}
             }
         except:
-            return {'message': 'Something went wrong'}, 500
+            return {'message': 'Error while revoking the token'}, 500
 
 
 class UserLogoutRefresh(Resource):
@@ -86,7 +86,7 @@ class UserLogoutRefresh(Resource):
                 'payload': {}
             }
         except:
-            return {'message': 'Something went wrong'}, 500
+            return {'message': 'Error while revoking the token'}, 500
 
 
 class TokenRefresh(Resource):
@@ -138,7 +138,7 @@ class Users(Resource):
                 }
             }, 201
         except:
-            return {'message': 'Something went wrong'}, 500
+            return {'message': 'Error while creating the user'}, 500
 
 
 class UsersDetail(Resource):
@@ -184,7 +184,7 @@ class UsersDetail(Resource):
                 }
             }, 200
         except:
-            return {'message': 'Something went wrong'}, 500
+            return {'message': 'Error while editing the user'}, 500
 
     @jwt_required
     def delete(self, id):
@@ -201,4 +201,4 @@ class UsersDetail(Resource):
                 "messages": "User deleted"
             }, 200
         except:
-            return {'message': 'Something went wrong'}, 500
+            return {'message': 'Error while deleting the user'}, 500
