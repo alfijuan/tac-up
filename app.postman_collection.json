@@ -1,0 +1,764 @@
+{
+	"info": {
+		"_postman_id": "3c331497-ac7b-49cf-b430-ddd4620acdd8",
+		"name": "TAP UP JA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register / User - Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"alfi4112\",\n    \"password\": \"123\",\n    \"first_name\": \"Juan\",\n    \"last_name\": \"Alfieri\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"alfi\",\n    \"password\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users - List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users - Detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDQ3MDg5ODAsIm5iZiI6MTYwNDcwODk4MCwianRpIjoiYmUxNmUyMDUtZDE2Yy00NDVjLWI1YmMtOTc4MmMwOWQzZmVmIiwiZXhwIjoxNjA0NzA5ODgwLCJpZGVudGl0eSI6ImFsZmkiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.1g2Pk0ulYJ5Lqghgqc1SUNPRlm0CpmyGHGxdsKMvhIk"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users - Edit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDQ3MDg5ODAsIm5iZiI6MTYwNDcwODk4MCwianRpIjoiYmUxNmUyMDUtZDE2Yy00NDVjLWI1YmMtOTc4MmMwOWQzZmVmIiwiZXhwIjoxNjA0NzA5ODgwLCJpZGVudGl0eSI6ImFsZmkiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.1g2Pk0ulYJ5Lqghgqc1SUNPRlm0CpmyGHGxdsKMvhIk"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"alfi22\",\n    \"first_name\": \"Juan\",\n    \"last_name\": \"Alfieri\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users - Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDQ3MDg5ODAsIm5iZiI6MTYwNDcwODk4MCwianRpIjoiYmUxNmUyMDUtZDE2Yy00NDVjLWI1YmMtOTc4MmMwOWQzZmVmIiwiZXhwIjoxNjA0NzA5ODgwLCJpZGVudGl0eSI6ImFsZmkiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.1g2Pk0ulYJ5Lqghgqc1SUNPRlm0CpmyGHGxdsKMvhIk"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"alfi22\",\n    \"first_name\": \"Juan\",\n    \"last_name\": \"Alfieri\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints relacionados a la db de usuarios",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Products - List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "password",
+									"value": "{{Token}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDU1NTYwNzcsIm5iZiI6MTYwNTU1NjA3NywianRpIjoiNGE5ZjY1YTctNmRkNy00YzUzLTgzOTgtNzg0OTRjOWQ5MDZkIiwiZXhwIjoxNjA1NTU2OTc3LCJpZGVudGl0eSI6ImFsZmkiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.qGWJttAKurw0Z7XC8SWQt4Tp33XWevrcp5JNgO6sSB4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/products",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products - Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tomate 5\",\n    \"price\": 1.50,\n    \"description\": \"Tomate the best\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/products",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products - Detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDQ3MDg5ODAsIm5iZiI6MTYwNDcwODk4MCwianRpIjoiYmUxNmUyMDUtZDE2Yy00NDVjLWI1YmMtOTc4MmMwOWQzZmVmIiwiZXhwIjoxNjA0NzA5ODgwLCJpZGVudGl0eSI6ImFsZmkiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.1g2Pk0ulYJ5Lqghgqc1SUNPRlm0CpmyGHGxdsKMvhIk"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/products/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"products",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products - Edit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDQ3MDg5ODAsIm5iZiI6MTYwNDcwODk4MCwianRpIjoiYmUxNmUyMDUtZDE2Yy00NDVjLWI1YmMtOTc4MmMwOWQzZmVmIiwiZXhwIjoxNjA0NzA5ODgwLCJpZGVudGl0eSI6ImFsZmkiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.1g2Pk0ulYJ5Lqghgqc1SUNPRlm0CpmyGHGxdsKMvhIk"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"alfi22\",\n    \"first_name\": \"Juan\",\n    \"last_name\": \"Alfieri\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/products/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"products",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products - Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDQ3MDg5ODAsIm5iZiI6MTYwNDcwODk4MCwianRpIjoiYmUxNmUyMDUtZDE2Yy00NDVjLWI1YmMtOTc4MmMwOWQzZmVmIiwiZXhwIjoxNjA0NzA5ODgwLCJpZGVudGl0eSI6ImFsZmkiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.1g2Pk0ulYJ5Lqghgqc1SUNPRlm0CpmyGHGxdsKMvhIk",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"alfi22\",\n    \"first_name\": \"Juan\",\n    \"last_name\": \"Alfieri\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/products/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"products",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer"
+			},
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Sales",
+			"item": [
+				{
+					"name": "Sales - List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sales - Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"product_id\": 1,\n    \"date\": \"2019-01-26\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sales - Detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDQ3MDg5ODAsIm5iZiI6MTYwNDcwODk4MCwianRpIjoiYmUxNmUyMDUtZDE2Yy00NDVjLWI1YmMtOTc4MmMwOWQzZmVmIiwiZXhwIjoxNjA0NzA5ODgwLCJpZGVudGl0eSI6ImFsZmkiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.1g2Pk0ulYJ5Lqghgqc1SUNPRlm0CpmyGHGxdsKMvhIk"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sales - Edit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDQ3MDg5ODAsIm5iZiI6MTYwNDcwODk4MCwianRpIjoiYmUxNmUyMDUtZDE2Yy00NDVjLWI1YmMtOTc4MmMwOWQzZmVmIiwiZXhwIjoxNjA0NzA5ODgwLCJpZGVudGl0eSI6ImFsZmkiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.1g2Pk0ulYJ5Lqghgqc1SUNPRlm0CpmyGHGxdsKMvhIk"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sales - Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDQ3MDg5ODAsIm5iZiI6MTYwNDcwODk4MCwianRpIjoiYmUxNmUyMDUtZDE2Yy00NDVjLWI1YmMtOTc4MmMwOWQzZmVmIiwiZXhwIjoxNjA0NzA5ODgwLCJpZGVudGl0eSI6ImFsZmkiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.1g2Pk0ulYJ5Lqghgqc1SUNPRlm0CpmyGHGxdsKMvhIk"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"alfi22\",\n    \"first_name\": \"Juan\",\n    \"last_name\": \"Alfieri\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sales - Commissions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/products",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sales - Commissions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/products",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDU1NjQ0MzEsIm5iZiI6MTYwNTU2NDQzMSwianRpIjoiNjVkMWViMDctN2IyNS00NGJjLTg4M2UtNmNmZDUwNTkyMTVjIiwiZXhwIjoxNjA1NTY1MzMxLCJpZGVudGl0eSI6ImFsZmkiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.OwAk9x36sJHtu22Br0nJ_wn6W4j54_MuF4QvFcaUHgQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "dcbe17b7-a060-48b1-87ae-f5bd2324de1f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d8bbbd9f-1b5f-4374-a7be-4349401edfe6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "0a87ceb8-10c8-4595-96f6-bfd6bfd8a2e3",
+			"key": "Token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDU1NTYwNzcsIm5iZiI6MTYwNTU1NjA3NywianRpIjoiNGE5ZjY1YTctNmRkNy00YzUzLTgzOTgtNzg0OTRjOWQ5MDZkIiwiZXhwIjoxNjA1NTU2OTc3LCJpZGVudGl0eSI6ImFsZmkiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.qGWJttAKurw0Z7XC8SWQt4Tp33XWevrcp5JNgO6sSB4"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

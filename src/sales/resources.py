@@ -4,6 +4,7 @@ from src.products.models import Product
 from src.users.models import User
 from decimal import Decimal
 from flask_jwt_extended import jwt_required
+from datetime import datetime
 
 parser = reqparse.RequestParser()
 parser.add_argument('id', required=False)
@@ -22,6 +23,9 @@ class Sales(Resource):
 
     @jwt_required
     def post(self):
+
+        parser.replace_argument('user_id', help='user_id cannot be blank', required=True)
+        parser.replace_argument('product_id', help='product_id cannot be blank', required=True)
         data = parser.parse_args()
 
         user_id = data.get('user_id')
@@ -39,7 +43,7 @@ class Sales(Resource):
         )
 
         if data.get('date'):
-            item.date = data.get('date')
+            item.date = datetime.strptime(data.get('date'), '%Y-%m-%d')
 
         if data.get('commission_paid'):
             item.commission_paid = data.get('commission_paid')
@@ -76,21 +80,24 @@ class SalesDetail(Resource):
         """
         Edit sale data
         """
+        parser.replace_argument('user_id', help='user_id cannot be blank', required=False)
+        parser.replace_argument('product_id', help='product_id cannot be blank', required=False)
         data = parser.parse_args()
 
         user_id = data.get('user_id')
-        if not User.find_by_id(user_id):
-            return {'message': f'User {user_id} doesn\'t exist'}, 400
+        if user_id:
+            if not User.find_by_id(user_id):
+                return {'message': f'User {user_id} doesn\'t exist'}, 400
 
         product_id = data.get('product_id')
-        if not Product.find_by_id(product_id):
-            return {'message': f'Product {product_id} doesn\'t exist'}, 400
+        if product_id:
+            if not Product.find_by_id(product_id):
+                return {'message': f'Product {product_id} doesn\'t exist'}, 400
         
         item = Sale.find_by_id(id)
 
         if not item:
             return {"messages": "Sale not found"}, 404
-
 
         for key, value in data.items():
             if data[key] is not None:
