@@ -57,7 +57,6 @@ class Sales(Resource):
                 }
             }, 201
         except Exception as e:
-            print(e)
             return {'message': 'Error while saving the sale'}, 500
 
 class SalesDetail(Resource):

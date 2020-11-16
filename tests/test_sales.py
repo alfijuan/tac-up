@@ -41,3 +41,60 @@ class SalesCase(BaseTestClass):
                 }
             )
             self.assertEqual(201, res.status_code)
+
+        print('- Create sales - error if user doesnt exists')
+        res = self.client.post('/sales', 
+            data={
+                "user_id": 99999,
+                "product_id": 1,
+            },
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(404, res.status_code)
+
+        print('- Create sales - error if product doesnt exists')
+        res = self.client.post('/sales', 
+            data={
+                "user_id": 1,
+                "product_id": 99999,
+            },
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(404, res.status_code)
+
+        print('- Get sale data')
+        res = self.client.get(f'/sales/1',
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(200, res.status_code)
+
+        print('- Get sale data')
+        res = self.client.get(f'/sales/9999',
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(404, res.status_code)
+
+        print('- Delete sale')
+        res = self.client.delete(
+            '/sales/1',
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(200, res.status_code)
+
+        print('- Delete sale - error if not exists')
+        res = self.client.delete(f'/sales/9999',
+            headers={
+                'Authorization': f'Bearer {access_token}'
+            }
+        )
+        self.assertEqual(404, res.status_code)
