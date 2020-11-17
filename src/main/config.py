@@ -32,9 +32,9 @@ class TestingConfig(Config):
 class ProductionConfig(Config):
     DEBUG = False
     SQLALCHEMY_BINDS = {
-        'users': os.environ.get('DB_USERS'),
-        'products': os.environ.get('DB_PRODUCTS'),
-        'sales': os.environ.get('DB_SALES')
+        'users': os.environ.get('DB_USERS') or 'sqlite:///' + os.path.join(basedir, 'app_users.db'),
+        'products': os.environ.get('DB_PRODUCTS') or 'sqlite:///' + os.path.join(basedir, 'app_products.db'),
+        'sales': os.environ.get('DB_SALES') or 'sqlite:///' + os.path.join(basedir, 'app_sales.db')
     }
 
 
