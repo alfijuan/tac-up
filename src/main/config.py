@@ -31,6 +31,11 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
+    SQLALCHEMY_BINDS = {
+        'users': os.environ.get('DB_USERS'),
+        'products': os.environ.get('DB_PRODUCTS'),
+        'sales': os.environ.get('DB_SALES')
+    }
 
 
 configs = {
@@ -39,5 +44,3 @@ configs = {
     'production': ProductionConfig,
     'default': DevelopmentConfig
 }
-
-# config = configs[os.environ.get('CONFIG_MODE', 'development')]
