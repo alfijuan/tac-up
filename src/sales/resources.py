@@ -1,3 +1,4 @@
+from flask import request
 from flask_restful import Resource, reqparse
 from src.sales.models import Sale
 from src.products.models import Product
@@ -141,6 +142,10 @@ class SalesCommissions(Resource):
 
         try:
             sales = Sale.query.filter_by(user_id=user_id, commission_paid=False)
+            if request.args.get('date_start'):
+                sales = sales.filter(Sale.date >= datetime.strptime(request.args.get('date_start'), '%Y-%m-%d'))
+            if request.args.get('date_end'):
+                sales = sales.filter(Sale.date <= datetime.strptime(request.args.get('date_end'), '%Y-%m-%d'))
             products_id = [x.product_id for x in sales]
             products = Product.query.filter(Product.id.in_(products_id)).all()
 
@@ -157,7 +162,8 @@ class SalesCommissions(Resource):
                 'total': str(total),
                 'commissions': str(round(commissions, 3))
             }
-        except:
+        except Exception as e:
+            print(e)
             return {'message': 'Error while calculating commissions'}, 500
 
     @jwt_required

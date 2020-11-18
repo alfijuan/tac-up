@@ -10,14 +10,14 @@ parser.add_argument('description', required=False)
 
 
 class Products(Resource):
-    @jwt_required
+    # @jwt_required
     def get(self):
         """
         Return all products
         """
         return Product.return_all()
 
-    @jwt_required
+    # @jwt_required
     def post(self):
         data = parser.parse_args()
         name = data['name']
@@ -44,7 +44,7 @@ class Products(Resource):
             return {'message': 'Error while saving the product'}, 500
 
 class ProductsDetail(Resource):
-    @jwt_required
+    # @jwt_required
     def get(self, id):
         """
         Return product
@@ -58,7 +58,7 @@ class ProductsDetail(Resource):
             }
         return {"messages": "Product not found"}, 404
 
-    @jwt_required
+    # @jwt_required
     def put(self, id):
         """
         Edit product data
@@ -89,7 +89,7 @@ class ProductsDetail(Resource):
         except Exception as e:
             return {'message': 'Error while updating the product'}, 500
 
-    @jwt_required
+    # @jwt_required
     def delete(self, id):
         """
         Delete user
